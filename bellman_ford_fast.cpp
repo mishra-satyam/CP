@@ -7,16 +7,16 @@ const ll NINF = -1e18;
 
 // adj list representation
 vpil adj[N];
-ll distanceval[N];
+ll dist[N];
 int parent[N];
 
 bool spfa(int s, int n) {
-    FOR(i,0,n) distanceval[i] = INF, parent[i] = -1;
+    FOR(i,0,n) dist[i] = INF, parent[i] = -1;
     vector<int> cnt(n, 0);
     vector<bool> inqueue(n, 0);
     queue<int> q;
 
-    distanceval[s] = 0;
+    dist[s] = 0;
     q.push(s);
     inqueue[s] = true;
     while (!q.empty()) {
@@ -28,8 +28,8 @@ bool spfa(int s, int n) {
             int to = edge.first;
             ll len = edge.second;
 
-            if (distanceval[v] + len < distanceval[to]) {
-                distanceval[to] = distanceval[v] + len;
+            if (dist[v] + len < dist[to]) {
+                dist[to] = dist[v] + len;
                 parent[to] = v;
                 if (!inqueue[to]) {
                     q.push(to);

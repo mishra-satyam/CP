@@ -9,7 +9,7 @@ typedef tree<pair<int, int>, null_type, less<pair<int, int>>, rb_tree_tag, tree_
 // order_of_key (number of items that are strictly smaller(come before) than given value)
 // (a.order_of_key(int_arg))
 
-// find_by_order (kth element in 0 base indexing) (a.find_by_order(int_arg))
+// find_by_order (kth element(iterator) in 0 base indexing) (a.find_by_order(int_arg))
 
 // for multiset use:
 //      t = 0
