@@ -8,6 +8,10 @@ struct edge{
     ll cost;
 };
 
+ll distanceval[N];
+vector<edge> edgelist;
+int parent[N];
+
 void addedge(int x, int y, int w){
     edge e1,e2;
     e1.a = x, e1.b = y, e1.cost = w;
@@ -16,9 +20,6 @@ void addedge(int x, int y, int w){
     edgelist.pb(e2);
 }
 
-ll distanceval[N];
-vector<edge> edgelist;
-int parent[N];
 
 void bellman_ford(int s, int n){
     FOR(i,0,n){
