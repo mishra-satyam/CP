@@ -52,3 +52,36 @@ FOR(i,1,n+1){
     }
 }
 cout << ans << "\n";
+
+
+//////////////////////////////////////////////////////////////////
+typedef struct partial_sum {
+	int n, m;
+    vector<vector<int>> ps;
+	partial_sum(vector<vector<int>> a) {
+        n = sz(a);
+        m = sz(a[0]);
+        ps.resize(n+1);
+        ps[0].resize(m+1);
+        int t;
+        FOR(i,1,n+1){
+            ps[i].clear();
+            ps[i].pb(0);
+            FOR(j,1,m+1){
+                t = a[i-1][j-1] + ps[i][j-1] + ps[i-1][j] - ps[i-1][j-1];
+                ps[i].pb(t);
+            }
+        }
+	}
+
+    int sum(int i1, int j1, int i2, int j2) {
+        i1++, i2++, j1++, j2++;
+        if (i1 > i2 || j1 > j2) swap(i1, i2), swap(j1, j2);
+
+        // i1, j1  i2, j2
+        assert(i1<=i2 and j1<=j2);
+        return (ps[i2][j2] - ps[i1-1][j2] - ps[i2][j1-1] + ps[i1-1][j1-1]);
+    }
+
+}psa;
+//////////////////////////////////////////////////////////////////////////
