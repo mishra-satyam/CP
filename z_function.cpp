@@ -15,6 +15,8 @@ void z_function(string& s) {
     }
 }
 
+// time complexity is O(N)
+
 // this gives longest suffix that also a proper prefix
 // that starts at this point (and this cant go beyond the end character)
 
