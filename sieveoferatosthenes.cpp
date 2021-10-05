@@ -41,8 +41,26 @@ void sieve(){
 //////////////////////////////////////////////////////////////////////////////////////////
 
 // O(nlog(logn))
-// only single occurance of all prime numbers
+// only single occurance of all prime numbers (excluding 1)
 
+/////////////////////////////////////////////////////////
+int lp[N+1];
+vector<int> pr;
+void sieve() {
+    for (int i=2; i<=N; ++i) {
+        if (lp[i] == 0) {
+            lp[i] = i;
+            pr.push_back (i);
+        }
+        for (int j=0; j<(int)pr.size() && pr[j]<=lp[i] && i*pr[j]<=N; ++j)
+        lp[i * pr[j]] = pr[j];
+    }
+}
+/////////////////////////////////////////////////////////////
+
+// O(N)
+// here we can even get the smallest prime factor using lp array
+// which gives smallest prime factor that divides that number
 
 
 //////////////////////////////////////////////////////////////////////////////////////////
