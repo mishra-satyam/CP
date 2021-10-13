@@ -1,3 +1,43 @@
+// better stuct version
+
+struct fraction {
+    pii val;
+    fraction() {val.fi=0, val.sc=1;}
+    fraction(int a) {val.fi = a, val.sc = 1;}
+    fraction(int a, int b) {val.fi = a, val.sc = b;}
+
+    void operator++ ()
+    {val.fi = (0ll+val.fi+val.sc)%mod;}
+    void operator-- ()
+    {val.fi = (0ll+mod+val.fi-val.sc)%mod;}
+    void operator+=(int x)
+    {val.fi = (0ll+val.fi+1ll*x*val.sc)%mod;}
+    fraction operator+(int x)
+    {fraction tmp;tmp.val.fi = (0ll+val.fi+1ll*x*val.sc)%mod;tmp.val.sc=val.sc;return tmp;}
+
+    void operator-=(int x)
+    {val.fi = (0ll+mod+val.fi-1ll*x*val.sc%mod)%mod;}
+    fraction operator-(int x)
+    {fraction tmp;tmp.val.fi = (0ll+mod+val.fi-1ll*x*val.sc)%mod;tmp.val.sc=val.sc;return tmp;}
+
+    fraction operator*(int x)
+    {fraction tmp;tmp.val.fi = (val.fi*1ll*x%mod);tmp.val.sc=val.sc;return tmp;}
+    void operator*=(int x)
+    {val.fi = (val.fi*x)%mod;}
+
+    fraction operator/(int x)
+    {fraction tmp;tmp.val.sc = (val.sc*1ll*x%mod);tmp.val.fi=val.fi;return tmp;}
+    void operator/=(int x)
+    {val.sc = (val.sc*x)%mod;}
+
+    friend ostream& operator<<(ostream& out, fraction& f)
+    {return out<<f.val.fi<<"/"<<f.val.sc<<"\n";return out;}
+
+};
+
+// _______________________________________________________________________________________________
+
+
 template<typename T1,typename T2> pair<T1,T2> operator++ (pair<T1,T2>& a)
 {a.fi = (0ll+a.fi+a.sc)%mod;return a;}
 template<typename T1,typename T2> pair<T1,T2> operator-- (pair<T1,T2>& a)
