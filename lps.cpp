@@ -41,6 +41,8 @@ void computeLPSArray(string& s)
 // this gives longest suffix that also a proper prefix
 // that ends at this point
 
+// TC is O(N)
+
 /*
 // Pattern Matching
 1.  Pattern + "extra character" + Text
