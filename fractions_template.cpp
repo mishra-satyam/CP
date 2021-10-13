@@ -67,7 +67,7 @@ struct fraction {
     val.sc=val.sc*1ll*x.val.fi;}
 
     friend ostream& operator<<(ostream& out, fraction& f)
-    {return out<<f.val.fi<<"/"<<f.val.sc<<"\n";return out;}
+    {return out<<f.val.fi<<"/"<<f.val.sc;return out;}
 
 };
 
