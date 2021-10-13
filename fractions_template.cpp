@@ -10,6 +10,13 @@ struct fraction {
     {val.fi = (0ll+val.fi+val.sc)%mod;}
     void operator-- ()
     {val.fi = (0ll+mod+val.fi-val.sc)%mod;}
+
+    fraction operator++(int)
+    {fraction before = *this;val.fi = (0ll+val.fi+val.sc)%mod;return before;}
+    fraction operator--(int)
+    {fraction before = *this;val.fi = (0ll+mod+val.fi-val.sc)%mod;return before;}
+
+    // fraction to int
     void operator+=(int x)
     {val.fi = (0ll+val.fi+1ll*x*val.sc)%mod;}
     fraction operator+(int x)
@@ -29,6 +36,35 @@ struct fraction {
     {fraction tmp;tmp.val.sc = (val.sc*1ll*x%mod);tmp.val.fi=val.fi;return tmp;}
     void operator/=(int x)
     {val.sc = (val.sc*x)%mod;}
+
+    // fraction to fraction
+    void operator+=(fraction x)
+    {val.fi = (val.fi*1ll*x.val.sc + x.val.fi*1ll*val.sc)%mod;
+    val.sc = val.sc*1ll*x.val.sc%mod;}
+    fraction operator+(fraction x)
+    {fraction tmp;tmp.val.fi = (val.fi*1ll*x.val.sc + x.val.fi*1ll*val.sc)%mod;
+    tmp.val.sc = val.sc*1ll*x.val.sc%mod;return tmp;}
+
+    void operator-=(fraction x)
+    {val.fi = (val.fi*1ll*x.val.sc%mod - x.val.fi*1ll*val.sc%mod + mod)%mod;
+    val.sc = val.sc*x.val.sc*1ll%mod;}
+    fraction operator-(fraction x)
+    {fraction tmp;tmp.val.fi = (val.fi*1ll*x.val.sc%mod - x.val.fi*1ll*val.sc%mod + mod)%mod;
+    tmp.val.sc = val.sc*x.val.sc*1ll%mod;return tmp;}
+
+    fraction operator*(fraction x)
+    {fraction tmp;tmp.val.fi = (val.fi*1ll*x.val.fi%mod);
+    tmp.val.sc=val.sc*1ll*x.val.sc;return tmp;}
+    void operator*=(fraction x)
+    {val.fi = (val.fi*1ll*x.val.fi%mod);
+    val.sc=val.sc*1ll*x.val.sc;}
+
+    fraction operator/(fraction x)
+    {fraction tmp;tmp.val.fi = (val.fi*1ll*x.val.sc%mod);
+    tmp.val.sc=val.sc*1ll*x.val.fi;return tmp;}
+    void operator/=(fraction x)
+    {val.fi = (val.fi*1ll*x.val.sc%mod);
+    val.sc=val.sc*1ll*x.val.fi;}
 
     friend ostream& operator<<(ostream& out, fraction& f)
     {return out<<f.val.fi<<"/"<<f.val.sc<<"\n";return out;}
