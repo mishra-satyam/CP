@@ -36,7 +36,7 @@ void bfs(int s, int n){
     // add rest sources here
     q.push(s);
     dist[s] = 0;
-    visited[s] = true;
+    visited[s] = true;  // this is required here XD
     parent[s] = -1;
 
     while(!q.empty()){
