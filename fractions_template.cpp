@@ -69,6 +69,10 @@ struct fraction {
     friend ostream& operator<<(ostream& out, fraction& f)
     {return out<<f.val.fi<<"/"<<f.val.sc;return out;}
 
+    // comparator function
+    bool operator<(const fraction &other) {
+        return val.fi*1ll*other.sc < other.fi*1ll*val.sc;
+    }
 };
 
 // _______________________________________________________________________________________________
