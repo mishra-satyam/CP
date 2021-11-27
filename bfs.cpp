@@ -44,12 +44,11 @@ void bfs(int s, int n){
         q.pop();
 
         for(int &adjv:adj[cur]){
-            if (!visited[adjv]){
-                visited[adjv] = true;
-                q.push(adjv);
-                parent[adjv] = cur;
-                dist[adjv] = dist[cur] + 1;
-            }
+            if (visited[adjv]) continue;
+            visited[adjv] = true;
+            q.push(adjv);
+            parent[adjv] = cur;
+            dist[adjv] = dist[cur] + 1;
         }
     }
 }
