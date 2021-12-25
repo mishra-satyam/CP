@@ -85,3 +85,25 @@ typedef struct partial_sum {
 
 }psa;
 //////////////////////////////////////////////////////////////////////////
+
+
+//////////////////////////////////////////////////////////////////////////
+typedef struct partial_sum {
+	int n;
+    vector<int> ps;
+	partial_sum(vector<int> a) {
+        n = sz(a);
+        ps.resize(n+1);
+        ps[0] = 0;
+        FOR(i,1,n+1) ps[i] = ps[i-1] + a[i-1];
+	}
+
+    int sum(int i, int j) {
+        i++, j++;
+        // i1, j1  i2, j2
+        assert(i<=j);
+        return (ps[j]-ps[i-1]);
+    }
+
+}prtlsm;
+//////////////////////////////////////////////////////////////////////////
