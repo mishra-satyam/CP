@@ -35,7 +35,7 @@ struct fraction {
     fraction operator/(int x)
     {fraction tmp;tmp.val.sc = (val.sc*1ll*x%mod);tmp.val.fi=val.fi;return tmp;}
     void operator/=(int x)
-    {val.sc = (val.sc**1llx)%mod;}
+    {val.sc = (val.sc*1ll*x)%mod;}
 
     // fraction to fraction
     void operator+=(fraction x)
@@ -71,7 +71,7 @@ struct fraction {
 
     // comparator function
     bool operator<(const fraction &other) {
-        return val.fi*1ll*other.sc < other.fi*1ll*val.sc;
+        return val.fi*1ll*other.val.sc < other.val.fi*1ll*val.sc;
     }
 };
 
