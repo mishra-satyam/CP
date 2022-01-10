@@ -1,3 +1,6 @@
+// FEMWICK TREES ARE ALWAYS ONE BASE INDEXED
+
+
 // range update, point query
 
 #define LSB(i) ((i) & -(i))

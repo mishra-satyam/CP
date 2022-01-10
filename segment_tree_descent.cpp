@@ -262,3 +262,58 @@ signed main(){
 }
 
 // this is even present on cf edu section
+
+
+
+///////////////////////////////////////////////////////////////////////
+// This one is for two kind of update
+// range set and range add
+#define node node1
+#define update update1
+struct node{
+	int v = 2e9;
+	node(){}
+	node(int val){
+		v = val;
+	}
+	void merge(node &l,node &r)
+	{
+		v = min(l.v,r.v);
+	}
+	bool check(int x){
+		if(v < x){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+};
+struct update{
+	int v = 0;
+    int t = 0;
+    // t = 0 => update
+    // t = 1 => set
+	update(){}
+	update(pii val){
+        v = val.fi;
+		t = val.sc;
+	}
+	void combine(update &other,int32_t tl,int32_t tr){
+        if (other.t) {
+            v = other.v;
+            t = 1;
+        }
+        else {
+            v += other.v;
+        }
+	}
+	void apply(node &x,int32_t tl,int32_t tr){
+        if (t) x.v = v;
+        else x.v += v;
+	}
+};
+segtree<node,update> t;
+#undef node
+#undef update
+///////////////////////////////////////////////////////////////////////

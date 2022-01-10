@@ -191,6 +191,11 @@ int main(){
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////
 // descent in sparse segtree (verified)
+
+// maybe line 202 and 213 are incorrect (v == 0 condition)
+// if the are correct plij add reason 
+// else remove them
+
 template<typename T>
 int descent_right(int l, T x, int32_t v,const int &tl,const  int&tr, node &prev) {
 	if (l > tr) // node is completely out of range
@@ -214,6 +219,14 @@ int descent_right(int l, T x, int32_t v,const int &tl,const  int&tr, node &prev)
 	if(ans!=len)return ans; // found in left child
 	return descent_right(l, x, ri[v], tm+1, tr, prev); // finding in right child
 }
+
+template<typename T>
+int descent_right(int l, T x){ // minimum r such that [l...r].check(x) == true, returns segtree.len if not found
+	node prev=identity_element;
+	return descent_right(l,x,1,prev);
+}
+
+// also need to add check function in the node
 
 /////////////////////////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////////////////////////

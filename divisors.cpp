@@ -1,18 +1,22 @@
+vi divs1, divs2;
 void printDivisors(int n)
 {
-    // Note that this loop runs till square root
+    divs1.clear();
+    divs2.clear();
     for (int i=1; i<=sqrt(n); i++)
     {
         if (n%i == 0)
         {
-            // If divisors are equal, print only one
             if (n/i == i)
-            printf("%d ", i);
+            divs1.pb(i);
 
-            else // Otherwise print both
-            printf("%d %d ", i, n/i);
+            else {
+                divs1.pb(i);
+                divs2.pb(n/i);
+            }
         }
     }
+    reverse(all(divs2));
 }
 
 // including 1 and that number itself

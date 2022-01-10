@@ -1,5 +1,8 @@
 // better stuct version
 
+// will work with ll but stored in int (under mod)
+// if you dont want mod then change mod to LLMAX and pii to pll
+
 struct fraction {
     pii val;
     fraction() {val.fi=0, val.sc=1;}
@@ -72,6 +75,26 @@ struct fraction {
     // comparator function
     bool operator<(const fraction &other) {
         return val.fi*1ll*other.val.sc < other.val.fi*1ll*val.sc;
+    }
+    
+    bool operator<=(const fraction &other) {
+        return val.fi*1ll*other.val.sc <= other.val.fi*1ll*val.sc;
+    }
+    
+    bool operator>(const fraction &other) {
+        return val.fi*1ll*other.val.sc > other.val.fi*1ll*val.sc;
+    }
+    
+    bool operator>=(const fraction &other) {
+        return val.fi*1ll*other.val.sc >= other.val.fi*1ll*val.sc;
+    }
+    
+    bool operator==(const fraction &other) {
+        return val.fi*1ll*other.val.sc == other.val.fi*1ll*val.sc;
+    }
+    
+    bool operator!=(const fraction &other) {
+        return val.fi*1ll*other.val.sc != other.val.fi*1ll*val.sc;
     }
 };
 
