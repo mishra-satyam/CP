@@ -384,6 +384,47 @@ struct update
 /////////////////////////////////////////////////////////////////////////////
 /////////////////////////////////////////////////////////////////////////////
 
+///////////////////////////////////////////////////////////////////////
+// This one is for two kind of update
+// range set and range add
+struct node{
+	int v = 2e9;
+	node(){}
+	node(int val){
+		v = val;
+	}
+	void merge(const node &l,const node &r)
+	{
+		v = min(l.v,r.v);
+	}
+};
+
+struct update{
+	int v = 0;
+    int t = 0;
+    // t = 0 => update
+    // t = 1 => set
+	update(){}
+	update(pii val){
+        v = val.fi;
+		t = val.sc;
+	}
+	void combine(update &other,const int32_t &tl,const int32_t &tr){
+        if (other.t) {
+            v = other.v;
+            t = 1;
+        }
+        else {
+            v += other.v;
+        }
+	}
+	void apply(node &x,const int32_t tl,const int32_t tr){
+        if (t) x.v = v;
+        else x.v += v;
+	}
+};	
+///////////////////////////////////////////////////////////////////////
+
 
 ///////////////////////////////////////////////////////////////////////
 // This one is for two kind of update

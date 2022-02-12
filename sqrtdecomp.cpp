@@ -2,7 +2,7 @@
 const int N = 1e5;
 // const int Q = 1e5;
 
-#define B 100
+#define B 300
 
 struct query{
 	int i, l, r;
@@ -12,9 +12,9 @@ int cur_ans;
 int ans[N];
 int a[N];
 
-bool comp(query a1 , query b)
+bool comp(query q1 , query q2)
 {
-	return ((a1.l/B < b.l/B) || (a1.l/B == b.l/B and a1.r < b.r));
+	return ((q1.l/B < q2.l/B) || (q1.l/B == q2.l/B and q1.r < q2.r));
 }
 
 void add(int pos)
@@ -58,7 +58,7 @@ int main()
 
 }
 
-// O( B*Q + N*N/B )
+// O( B*Q + N*N/B )  *  time taken to do add/remove
 // so in general case B = (n/sqrt(Q))
 
 /*____________________________________________________________________________________*/

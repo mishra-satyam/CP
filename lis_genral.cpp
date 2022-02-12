@@ -56,7 +56,23 @@ for(int i = 0; i < n ; i++){
     dp[idx] = a[i];
 }
 
+/////////////////////////////////////////////////////////////////////
 
+int lis(vector<int> a) {
+    int ans = 0;
+    int n = sz(a);
+    int dp[n+1];
+    fill(dp, dp+n+1, 2e9);
+    for(int i = 0; i < n ; i++){
+        // remove this -1 if you want longest non-dereasing subsequence
+        int idx = upper_bound(dp+1, dp+n+1, a[i]-1) - dp;
+        // int len = idx - 1;
+        if (idx > ans) ans = idx;
+        dp[idx] = a[i];
+    }
+    return ans;
+}
+/////////////////////////////////////////////////////////////////////
 
 // atcoder DP Q flowers (general lis easy to code)
 // short explanation of what i did here
