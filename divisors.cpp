@@ -1,8 +1,7 @@
-vi divs1, divs2;
+vi divs;
 void printDivisors(int n)
 {
-    divs1.clear();
-    divs2.clear();
+    vi divs1, divs2;
     for (int i=1; i<=sqrt(n); i++)
     {
         if (n%i == 0)
@@ -17,6 +16,9 @@ void printDivisors(int n)
         }
     }
     reverse(all(divs2));
+    divs.clear();
+    for (auto &x : divs1) divs.pb(x);
+    for (auto &x : divs2) divs.pb(x);
 }
 
 // including 1 and that number itself

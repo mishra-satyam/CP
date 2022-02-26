@@ -1,5 +1,5 @@
 
-const int N = 1e5;
+const int N = 1e5+10;
 // const int Q = 1e5;
 
 #define B 300
@@ -27,7 +27,7 @@ void remove(int pos)
 
 }
 
-int main()
+void solve()
 {
 	int n , qn;
 	cin>>n;

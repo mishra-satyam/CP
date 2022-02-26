@@ -33,7 +33,7 @@ void sieve(){
 		if(primes[i]==0){
 			pr.pb(i);
 			for(int j=i;j<N;j+=i){
-				primes[j]=1;
+				if (j!=i) primes[j]=1;
 				fac[j].pb(i);
 			}
 		}
