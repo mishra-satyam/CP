@@ -1,7 +1,7 @@
-vi divs;
-void printDivisors(int n)
+vl divs;
+void printDivisors(ll n)
 {
-    vi divs1, divs2;
+    vl divs1, divs2;
     for (int i=1; i<=sqrt(n); i++)
     {
         if (n%i == 0)
