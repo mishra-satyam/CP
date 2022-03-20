@@ -28,16 +28,16 @@ struct fenwick{
 typedef struct fenwick{
 	int maxn;
 	ll A[N];
-    void operator()(int n){
+	void operator()(int n){
 		maxn = n+1;
 		FOR(i,0,n+1) A[i] = 0;
 	}
-    fenwick(){}
+	fenwick(){}
 	fenwick(int n){
 		maxn = n+1;
 		FOR(i,0,n+1) A[i] = 0;
 	}
-    ll query(int i){
+	ll query(int i){
 		ll sum = 0;
 		while (i > 0)
 			sum += A[i], i -= LSB(i);
@@ -93,7 +93,7 @@ typedef struct fenwick{
 		maxn = n+1;
 		FOR(i,0,n+1) A[i] = 0;
 	}
-    fenwick(){}
+	fenwick(){}
 	fenwick(int n){
 		maxn = n+1;
 		FOR(i,0,n+1) A[i] = 0;
@@ -128,10 +128,10 @@ IMPORTANT POINTS
 	then make shure that it is initalised to zeros
 
 	void set(int n){
-        FOR(i,0,n){
-            A[i] = 0;
-        }
-    }
+		FOR(i,0,n){
+			A[i] = 0;
+		}
+	}
 
 3.	void operator()(int n){
 		maxn = n+1;
