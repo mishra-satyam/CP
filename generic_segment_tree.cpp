@@ -332,52 +332,31 @@ struct node
 {
 	int mn = INF;
 	int freq = 0;
-	// use more variables if you want more information
-	// these default values should be identity_element
 	node(){}
 	node(int val){
 		mn = val;
 		freq = 1;
 	}
-	void merge(const node &l,const node &r){ // store the thing you wanna query
-
+	void merge(const node &l,const node &r){
 		mn = min(l.mn,r.mn);
 		freq = 0;
 		if(l.mn == mn) freq += l.freq;
 		if(r.mn == mn) freq += r.freq;
-
-		// if we wanted the maximum, then we would do
-		// like v = max(l.v,r.v)
 	}
 };
 
-// example: add on a range: identity transformation = 0
-// old += new
-
-// if old is identity which is 0, then 0 + new which new
-
 struct update
 {
-	int v = 0; // 4
-	// use more variables if you want more information
-	// these default values should be identity_transformation
+	int v = 0;
 	update(){}
 	update(int val){
-		v = val; // 5
+		v = val;
 	}
-	// combine the current update with the other update (see keynotes)
 	void combine(update &other,const int32_t &tl,const int32_t &tr){
-		v += other.v; // 6
-
-		// you can be sure that the "other" is newer than current
-
+		v += other.v;
 	}
-	// store the correct information in the node x
 	void apply(node &x,const int32_t &tl,const int32_t &tr){
-
-		// no change in freq
 		x.mn += v;
-
 	}
 };
 
