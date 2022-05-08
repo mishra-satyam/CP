@@ -2,9 +2,9 @@
 const int mod = 998244353;
 // primitive root of mod
 // calculate if mod is differenet
-const int root = 2;
+const int root = 3;
 // inverse of root in mod
-const int root_1 = 4404020;
+const int root_1 = 332748118;
 // max power of two in mod
 const int root_pw = 1 << 23;
 
@@ -41,8 +41,7 @@ void fft(vector<int> & a, bool invert) {
 
 	for (int len = 2; len <= n; len <<= 1) {
 		int wlen = invert ? root_1 : root;
-		for (int i = len; i < root_pw; i <<= 1)
-			wlen = (int)(1LL * wlen * wlen % mod);
+		wlen = power(wlen, (mod-1)/len);
 
 		for (int i = 0; i < n; i += len) {
 			int w = 1;
