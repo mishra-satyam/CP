@@ -1,12 +1,12 @@
 // the modulous in which we are working 
-const int mod = 7340033;
+const int mod = 998244353;
 // primitive root of mod
 // calculate if mod is differenet
-const int root = 5;
+const int root = 2;
 // inverse of root in mod
 const int root_1 = 4404020;
 // max power of two in mod
-const int root_pw = 1 << 20;
+const int root_pw = 1 << 23;
 
 int power(int x, int y){
 	int res = 1;     // Initialize result
@@ -81,3 +81,6 @@ vector<int> multiply(vector<int> const& a, vector<int> const& b) {
 		result[i] = (fa[i]);
 	return result;
 }
+
+// NOTES:
+// (i) one point to remember is that n after resizing must divide (p-1)
